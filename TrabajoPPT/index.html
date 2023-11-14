@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Piedra-Papel-Tijera</title>
+
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="css.css">
+</head>
+
+<body>
+    <div id="div1">
+        <h1>Juego de Piedra-Papel-Tijera</h1>
+        <form id="formularioJugador">
+            <label for="label1">Ingresa tu apodo: </label>
+            <input type="text" id="label1" required>
+            <button type="button" id="botonComenzar" onclick="empezarJuego()">Comenzar</button>
+        </form>
+        <div id="menu">
+            <button id="botonJugar" disabled>Jugar Partida</button>
+            <button id="botonEstadisticas" disabled>Ver Estadísticas</button>
+        </div>
+
+
+        <!-- No funciona -->
+        <div id="div2">
+            <img src="img/piedra.png" id="piedra" class="game-icon" alt="Piedra" width="200px">
+            <img src="img/papel.png" id="papel" class="game-icon" alt="Papel" width="150px">
+            <img src="img/tijeras.png" id="tijera" class="game-icon" alt="Tijera" width="200px">
+        </div>
+        <!-- Aquí se mostrarán los resultados del juego -->
+        <div id="div3">
+            <div id="estadisticas"></div>
+        </div>
+
+
+    </div>
+
+    <!-- Enlace al archivo JavaScript externo -->
+    <script src="java.js"></script>
+</body>
+
+</html>
