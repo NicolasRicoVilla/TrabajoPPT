@@ -19,16 +19,21 @@
             <button type="button" id="botonComenzar" onclick="empezarJuego()">Comenzar</button>
         </form>
         <div id="menu">
-            <button id="botonJugar" disabled>Jugar Partida</button>
+            <button id="botonJugar" disabled onclick="jugarPartida()">Jugar Partida</button>
             <button id="botonEstadisticas" disabled>Ver Estadísticas</button>
         </div>
 
 
         <!-- No funciona -->
         <div id="div2">
-            <img src="img/piedra.png" id="piedra" class="game-icon" alt="Piedra" width="200px">
-            <img src="img/papel.png" id="papel" class="game-icon" alt="Papel" width="150px">
-            <img src="img/tijeras.png" id="tijera" class="game-icon" alt="Tijera" width="200px">
+            <img hidden src="img/piedra.png"  id="Ipiedra" class="game-icon" alt="Piedra" width="200px">
+            
+            <img hidden src="img/papel.png" id="Ipapel" class="game-icon" alt="Papel" width="150px">
+            <img hidden src="img/tijeras.png" id="Itijera" class="game-icon" alt="Tijera" width="200px">
+            <br>
+            <button type="button" hidden id="piedra" onclick="juego('piedra')">Piedra</button>
+            <button  type="button" hidden id="papel" onclick="juego('papel')">Papel</button>
+            <button type="button" hidden id="tijera" onclick="juego('tijera')">Tijera</button>
         </div>
         <!-- Aquí se mostrarán los resultados del juego -->
         <div id="div3">
