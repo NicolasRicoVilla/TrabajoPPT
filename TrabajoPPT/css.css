@@ -31,3 +31,15 @@ button {
     margin: 10px;
     cursor: pointer;
 }
+
+textarea{
+background-color: #949494;
+width: 400px; 
+height: 350px; 
+padding: 10px; 
+font-size: 14px; 
+border: 5px solid color(black ); 
+border-radius: 5px; 
+resize: none;
+color: white;
+}
