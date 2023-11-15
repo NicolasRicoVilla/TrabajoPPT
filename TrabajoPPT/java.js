@@ -43,6 +43,8 @@ function empezarJuego() {
 
  function juego(jugador){
   
+  //Hay que poner mas bonito lo del text area y los colores 
+
    const choices = ["piedra", "papel", "tijera"];
    const computer = choices[Math.floor(Math.random() * 3)];
    const resultadoTextarea = document.getElementById("resultados");
