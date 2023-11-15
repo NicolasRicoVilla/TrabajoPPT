@@ -45,19 +45,24 @@ function empezarJuego() {
   
    const choices = ["piedra", "papel", "tijera"];
    const computer = choices[Math.floor(Math.random() * 3)];
-   
+   const resultadoTextarea = document.getElementById("resultados");
+ 
    if ((jugador === "papel "&& computer === "piedra") || (jugador === "piedra" && computer === "tijera") || (jugador === "tijera" && computer === "papel")) {
-       alert("Ganaste"); 
+    resultadoTextarea.value += "Ganaste "+"Has elegido:  " +jugador+ " La CPU ha elegido:  "+computer+"\n";
    }else if ((jugador === "piedra" && computer === "papel") || (jugador === "papel" && computer === "tijera") || (jugador === "tijera" && computer === "piedra")){
-       alert("Perdiste") ; 
+    resultadoTextarea.value += "Perdiste "+"Has elegido:  "+jugador+ " La CPU ha elegido: " +computer+"\n";
    }else{
-       alert("Empate"); 
+    resultadoTextarea.value += "Empate "+"Has elegido: " +jugador+ " La CPU ha elegido: " +computer+"\n";
+       
+       rondasJugadas--;
    }
    
    rondasJugadas++;
 
    if (rondasJugadas === rondasTotales){
        alert("Gracias por jugar");
+       resultadoTextarea.value = "----------------Gracias por jugar!-----------------\n";
+       
    }
    document.getElementById("botonJugar").disabled = true;
    document.getElementById("botonEstadisticas").disabled = true;
