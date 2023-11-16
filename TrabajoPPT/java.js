@@ -62,8 +62,8 @@ function empezarJuego() {
    rondasJugadas++;
 
    if (rondasJugadas === rondasTotales){
-       alert("Gracias por jugar");
-       resultadoTextarea.value = "----------------Gracias por jugar!-----------------\n";
+       
+       resultadoTextarea.value += "----------------Gracias por jugar!-----------------\n";
        
    }
    document.getElementById("botonJugar").disabled = true;
