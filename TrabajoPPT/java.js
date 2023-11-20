@@ -1,12 +1,13 @@
-let puntosJugador = 0;
+
 let rondasJugadas = 0;
 function empezarJuego() {
        const jugador = document.getElementById("label1").value;
        
-   
-    
+       
+      
        document.getElementById("botonJugar").disabled = false;
        document.getElementById("botonEstadisticas").disabled = false;
+       
    }
 
  function jugarPartida(){
@@ -59,17 +60,36 @@ function empezarJuego() {
        rondasJugadas--;
    }
    
-   document.getElementById("numeroTextArea").value= "Puntos: "+puntosJugador;
    rondasJugadas++;
 
    if (rondasJugadas === rondasTotales){
-       
+    document.getElementById("botonJugar").disabled = true;
+    document.getElementById("botonEstadisticas").disabled = true;
+    document.getElementById("piedra").hidden = true;
+    document.getElementById("papel").hidden = true;
+    document.getElementById("tijera").hidden = true;
+    document.getElementById("Ipiedra").hidden = true;
+    document.getElementById("Ipapel").hidden = true;
+    document.getElementById("Itijera").hidden = true;
+
+     
        resultadoTextarea.value += "----------------Gracias por jugar!-----------------\n";
        
+       const limpar = document.getElementById("resultados");
+       setTimeout(function(){
+           limpar.value = "";
+       } , 3000);
+      
+      
+       
    }
-   document.getElementById("botonJugar").disabled = true;
-   document.getElementById("botonEstadisticas").disabled = true;
-  
+    
+   
+
+   
+  function limpar (){
+      resultadoTextarea.value = "";
+  }
  }
 
  
