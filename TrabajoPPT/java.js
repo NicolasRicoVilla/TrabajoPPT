@@ -1,5 +1,5 @@
+let puntosJugador = 0;
 let rondasJugadas = 0;
-let rondasTotales = 0;
 function empezarJuego() {
        const jugador = document.getElementById("label1").value;
        
@@ -59,6 +59,7 @@ function empezarJuego() {
        rondasJugadas--;
    }
    
+   document.getElementById("numeroTextArea").value= "Puntos: "+puntosJugador;
    rondasJugadas++;
 
    if (rondasJugadas === rondasTotales){
@@ -70,3 +71,5 @@ function empezarJuego() {
    document.getElementById("botonEstadisticas").disabled = true;
   
  }
+
+ 
