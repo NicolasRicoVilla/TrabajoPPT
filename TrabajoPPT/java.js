@@ -11,14 +11,24 @@ function empezarJuego() {
    }
 
  function jugarPartida(){
-     
+   
+   const botonEstadisticas = document.getElementById("botonEstadisticas");
+    const botonJugar = document.getElementById("botonJugar");
+    const formularioJugador = document.getElementById("formularioJugador");
    const imagenPiedra = document.getElementById("Ipiedra");
    const imagenPapel = document.getElementById("Ipapel");
    const imagenTijera = document.getElementById("Itijera");
    const botonPiedra = document.getElementById("piedra");
    const botonPapel = document.getElementById("papel");
    const botonTijera = document.getElementById("tijera");
-
+const numero= document.getElementById("numero");
+const resultadoTextarea = document.getElementById("resultados");
+   
+  resultadoTextarea.hidden = false;
+  numero.hidden = false;
+   botonEstadisticas.hidden = true;
+   botonJugar.hidden= true;
+   formularioJugador.hidden = true;
    imagenPiedra.hidden = false;
    imagenPapel.hidden = false;
    imagenTijera.hidden = false;
@@ -45,10 +55,10 @@ function empezarJuego() {
  function juego(jugador){
   
   //Hay que poner mas bonito lo del text area y los colores 
-
+   const resultadoTextarea = document.getElementById("resultados");
    const choices = ["piedra", "papel", "tijera"];
    const computer = choices[Math.floor(Math.random() * 3)];
-   const resultadoTextarea = document.getElementById("resultados");
+   
  
    if ((jugador === "papel "&& computer === "piedra") || (jugador === "piedra" && computer === "tijera") || (jugador === "tijera" && computer === "papel")) {
     resultadoTextarea.value += "Ganaste "+"Has elegido:  " +jugador+ " La CPU ha elegido:  "+computer+"\n";
@@ -72,12 +82,18 @@ function empezarJuego() {
     document.getElementById("Ipapel").hidden = true;
     document.getElementById("Itijera").hidden = true;
 
+
      
        resultadoTextarea.value += "----------------Gracias por jugar!-----------------\n";
        
        const limpar = document.getElementById("resultados");
        setTimeout(function(){
            limpar.value = "";
+           botonEstadisticas.hidden = false;
+           botonJugar.hidden= false;
+           formularioJugador.hidden = false;
+           resultadoTextarea.hidden = true;
+           numero.hidden = true;
        } , 3000);
       
       
