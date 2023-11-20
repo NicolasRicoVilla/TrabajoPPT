@@ -2,11 +2,10 @@
 let rondasJugadas = 0;
 function empezarJuego() {
        const jugador = document.getElementById("label1").value;
-       
-       
+     
       
-       document.getElementById("botonJugar").disabled = false;
-       document.getElementById("botonEstadisticas").disabled = false;
+       document.getElementById("botonJugar").hidden = false;
+       document.getElementById("botonEstadisticas").hidden = false;
        
    }
 
@@ -94,6 +93,7 @@ const resultadoTextarea = document.getElementById("resultados");
            formularioJugador.hidden = false;
            resultadoTextarea.hidden = true;
            numero.hidden = true;
+           rondasJugadas = 0;
        } , 3000);
       
       
@@ -105,6 +105,7 @@ const resultadoTextarea = document.getElementById("resultados");
    
   function limpar (){
       resultadoTextarea.value = "";
+     
   }
  }
 
