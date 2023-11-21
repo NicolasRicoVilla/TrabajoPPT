@@ -1,5 +1,6 @@
 
 let rondasJugadas = 0;
+let rondasTotales = 0;
 function empezarJuego() {
        const jugador = document.getElementById("label1").value;
      
