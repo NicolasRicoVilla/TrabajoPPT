@@ -120,11 +120,9 @@ const resultadoTextarea = document.getElementById("resultados");
     // Aquí puedes almacenar la partida en una estructura de datos, como un array o una base de datos
     // Por ahora, solo imprimiré los datos en la consola para que los veas
 
-    document.getElementById("numero").innerHTML += "Jugador: ${partida.jugador}\nFecha: ${partida.fecha}\nPuntos: ${partida.puntos}\n \n";
+    document.getElementById("numero").innerText += `Jugador: ${partida.jugador}\nFecha: ${partida.fecha}\nPuntos: ${partida.puntos}\n \n`;
     // Muestra el resultado final en un alert
     alert("El ganador es: " + ganador);
-
-
 }
 
 function calcularPuntos(ganador, jugador, ordenador) {
