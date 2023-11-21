@@ -2,10 +2,16 @@
 let rondasJugadas = 0;
 function empezarJuego() {
        const jugador = document.getElementById("label1").value;
-     
+
+       if (jugador.trim() === "") {
+        alert("Por favor, ingresa un nombre antes de empezar el juego");
+        return; 
+    }
       
        document.getElementById("botonJugar").hidden = false;
        document.getElementById("botonEstadisticas").hidden = false;
+      
+       
        
    }
 
@@ -98,14 +104,9 @@ const resultadoTextarea = document.getElementById("resultados");
       
        
    }
-    
-   
 
-   
-  function limpar (){
-      resultadoTextarea.value = "";
-     
-  }
+
+    
  }
 
  function showGameResults(jugador, ganador) {
