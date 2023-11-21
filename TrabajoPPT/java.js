@@ -2,6 +2,7 @@
 let rondasJugadas = 0;
 let rondasTotales = 0;
 function empezarJuego() {
+
        const jugador = document.getElementById("label1").value;
 
        if (jugador.trim() === "") {
@@ -46,9 +47,7 @@ const resultadoTextarea = document.getElementById("resultados");
    if (rondasSeleccionadas === "3" || rondasSeleccionadas === "5"){
      
        rondasTotales = parseInt(rondasSeleccionadas);
-       for (let i = 0; i < rondasTotales; i++){
-           juego(jugador);
-       }
+
        
        
    }else {
@@ -94,8 +93,10 @@ const resultadoTextarea = document.getElementById("resultados");
        const limpar = document.getElementById("resultados");
        setTimeout(function(){
            limpar.value = "";
-           botonEstadisticas.hidden = false;
-           botonJugar.hidden= false;
+           botonEstadisticas.disabled=false;
+           botonEstadisticas.hidden = true;
+           botonJugar.disabled=false;
+           botonJugar.hidden= true;
            formularioJugador.hidden = false;
            resultadoTextarea.hidden = true;
            numero.hidden = true;
