@@ -3,10 +3,16 @@ let rondasJugadas = 0;
 let rondasTotales = 0;
 function empezarJuego() {
        const jugador = document.getElementById("label1").value;
-     
+
+       if (jugador.trim() === "") {
+        alert("Por favor, ingresa un nombre antes de empezar el juego");
+        return; 
+    }
       
        document.getElementById("botonJugar").hidden = false;
        document.getElementById("botonEstadisticas").hidden = false;
+      
+       
        
    }
 
@@ -99,14 +105,9 @@ const resultadoTextarea = document.getElementById("resultados");
       
        
    }
-    
-   
 
-   
-  function limpar (){
-      resultadoTextarea.value = "";
-     
-  }
+
+    
  }
 
  function showGameResults(jugador, ganador) {
@@ -120,13 +121,13 @@ const resultadoTextarea = document.getElementById("resultados");
     // Aquí puedes almacenar la partida en una estructura de datos, como un array o una base de datos
     // Por ahora, solo imprimiré los datos en la consola para que los veas
 
-    document.getElementById("numero").innerText += `Jugador: ${partida.jugador}\nFecha: ${partida.fecha}\nPuntos: ${partida.puntos}\n \n`;
+    const textarea = document.getElementById("numero");
+    textarea.value += `Jugador: ${partida.jugador}\nFecha: ${partida.fecha}\nPuntos: ${partida.puntos}\n \n`;
     // Muestra el resultado final en un alert
     alert("El ganador es: " + ganador);
 }
 
-function calcularPuntos(ganador, jugador, ordenador) {
-
+function calcularPuntos(ganador, jugador) {
     if (ganador === "Empate") {
         return 1;
     } else if (ganador === jugador) {
@@ -134,8 +135,9 @@ function calcularPuntos(ganador, jugador, ordenador) {
     } else {
         return 0;
     }
-
 }
+
 const gameStatisticsContainer = document.getElementById("numero");
+
 
  
