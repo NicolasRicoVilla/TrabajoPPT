@@ -94,7 +94,7 @@ const resultadoTextarea = document.getElementById("resultados");
            resultadoTextarea.hidden = true;
            numero.hidden = true;
            rondasJugadas = 0;
-       } , 3000);
+       } , 5000);
       
       
        
