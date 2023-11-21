@@ -51,24 +51,23 @@ const resultadoTextarea = document.getElementById("resultados");
      }
  }
 
- function juego(jugador){
+ function juego(jugador) {
+    const resultadoTextarea = document.getElementById("resultados");
+    const choices = ["piedra", "papel", "tijera"];
+    const computer = choices[Math.floor(Math.random() * 3)];
+    
+    // Eliminar espacios adicionales alrededor de la elección del jugador
+    jugador = jugador.trim();
   
-  //Hay que poner mas bonito lo del text area y los colores 
-   const resultadoTextarea = document.getElementById("resultados");
-   const choices = ["piedra", "papel", "tijera"];
-   const computer = choices[Math.floor(Math.random() * 3)];
-   
- 
-   if ((jugador === "papel "&& computer === "piedra") || (jugador === "piedra" && computer === "tijera") || (jugador === "tijera" && computer === "papel")) {
-    resultadoTextarea.value += "Ganaste "+"Has elegido:  " +jugador+ " La CPU ha elegido:  "+computer+"\n";
-   }else if ((jugador === "piedra" && computer === "papel") || (jugador === "papel" && computer === "tijera") || (jugador === "tijera" && computer === "piedra")){
-    resultadoTextarea.value += "Perdiste "+"Has elegido:  "+jugador+ " La CPU ha elegido: " +computer+"\n";
-   }else{
-    resultadoTextarea.value += "Empate "+"Has elegido: " +jugador+ " La CPU ha elegido: " +computer+"\n";
-       
-       rondasJugadas--;
-   }
-   
+    if ((jugador === "papel" && computer === "piedra") || (jugador === "piedra" && computer === "tijera") || (jugador === "tijera" && computer === "papel")) {
+      resultadoTextarea.value += "Ganaste " + "Has elegido: " + jugador + " La CPU ha elegido: " + computer + "\n";
+    } else if ((jugador === "piedra" && computer === "papel") || (jugador === "papel" && computer === "tijera") || (jugador === "tijera" && computer === "piedra")) {
+      resultadoTextarea.value += "Perdiste " + "Has elegido: " + jugador + " La CPU ha elegido: " + computer + "\n";
+    } else {
+      resultadoTextarea.value += "Empate " + "Has elegido: " + jugador + " La CPU ha elegido: " + computer + "\n";
+      rondasJugadas--;
+    }
+
    rondasJugadas++;
 
    if (rondasJugadas === rondasTotales){
