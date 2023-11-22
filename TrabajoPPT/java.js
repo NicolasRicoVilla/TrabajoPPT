@@ -1,6 +1,8 @@
 
 let rondasJugadas = 0;
 let rondasTotales = 0;
+let puntosJugador= 0;
+let puntosO = 0;
 function empezarJuego() {
 
        const jugador = document.getElementById("label1").value;
@@ -86,7 +88,7 @@ const resultadoTextarea = document.getElementById("resultados");
     document.getElementById("Ipapel").hidden = true;
     document.getElementById("Itijera").hidden = true;
 
-
+    numero.value += `Puntos finales del jugador: ${puntosJugador}\n`;
      
        resultadoTextarea.value += "----------------Gracias por jugar!-----------------\n";
        
@@ -108,37 +110,44 @@ const resultadoTextarea = document.getElementById("resultados");
    }
 
 
-    
- }
-
- function showGameResults(jugador, ganador) {
-    // Almacena los datos de la partida
-    const partida = {
-        jugador: jugador,
-        fecha: new Date().toLocaleString(),
-        puntos: calcularPuntos(ganador, jugador)
-    };
-
-    // Aquí puedes almacenar la partida en una estructura de datos, como un array o una base de datos
-    // Por ahora, solo imprimiré los datos en la consola para que los veas
-
-    const textarea = document.getElementById("numero");
-    textarea.value += `Jugador: ${partida.jugador}\nFecha: ${partida.fecha}\nPuntos: ${partida.puntos}\n \n`;
-    // Muestra el resultado final en un alert
-    alert("El ganador es: " + ganador);
 }
-
-function calcularPuntos(ganador, jugador) {
-    if (ganador === "Empate") {
-        return 1;
-    } else if (ganador === jugador) {
-        return 3;
-    } else {
-        return 0;
-    }
-}
-
-const gameStatisticsContainer = document.getElementById("numero");
-
-
  
+
+
+  function jugar(opcionJugador) {
+    const opciones = ['piedra', 'papel', 'tijeras'];
+    const opcionOrdenador = opciones[Math.floor(Math.random() * 3)];
+
+    let resultado = '';
+
+    if (opcionJugador === opcionOrdenador) {
+      // Empate
+      resultado = 'Empate. 1 punto para cada uno.';
+      puntosJugador += 1;
+      puntosOrdenador += 1;
+    } else if (
+      (opcionJugador === 'piedra' && opcionOrdenador === 'tijeras') ||
+      (opcionJugador === 'papel' && opcionOrdenador === 'piedra') ||
+      (opcionJugador === 'tijeras' && opcionOrdenador === 'papel')
+    ) {
+      // Jugador gana
+      resultado = '¡Ganaste! 3 puntos para ti.';
+      puntosJugador += 3;
+    } else {
+      // Ordenador gana
+      resultado = 'Perdiste. 0 puntos para ti.';
+      puntosOrdenador += 3;
+    }
+
+    actualizarTextarea(resultado);
+  }
+
+  function actualizarTextarea(resultado) {
+    const textarea = document.getElementById('numero');
+    textarea.value += resultado + '\n';
+    textarea.scrollTop = textarea.scrollHeight;
+    // Actualizar puntajes
+    textarea.value += `Puntos del jugador: ${puntosJugador}\n`;
+    textarea.value += `Puntos del ordenador: ${puntosCPU}\n\n`;
+  }
+
