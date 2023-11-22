@@ -30,11 +30,9 @@ function empezarJuego() {
    const botonPiedra = document.getElementById("piedra");
    const botonPapel = document.getElementById("papel");
    const botonTijera = document.getElementById("tijera");
-const numero= document.getElementById("numero");
 const resultadoTextarea = document.getElementById("resultados");
    
   resultadoTextarea.hidden = false;
-  numero.hidden = false;
    botonEstadisticas.hidden = true;
    botonJugar.hidden= true;
    formularioJugador.hidden = true;
@@ -88,7 +86,6 @@ const resultadoTextarea = document.getElementById("resultados");
     document.getElementById("Ipapel").hidden = true;
     document.getElementById("Itijera").hidden = true;
 
-    numero.value += `Puntos finales del jugador: ${puntosJugador}\n`;
      
        resultadoTextarea.value += "----------------Gracias por jugar!-----------------\n";
        
@@ -101,7 +98,6 @@ const resultadoTextarea = document.getElementById("resultados");
            botonJugar.hidden= true;
            formularioJugador.hidden = false;
            resultadoTextarea.hidden = true;
-           numero.hidden = true;
            rondasJugadas = 0;
        } , 5000);
       
@@ -114,40 +110,53 @@ const resultadoTextarea = document.getElementById("resultados");
  
 
 
-  function jugar(opcionJugador) {
-    const opciones = ['piedra', 'papel', 'tijeras'];
-    const opcionOrdenador = opciones[Math.floor(Math.random() * 3)];
+function juego(jugador) {
+  const tablaPuntuacion = document.getElementById("tablaPuntuacion");
+  const choices = ["piedra", "papel", "tijera"];
+  const computer = choices[Math.floor(Math.random() * 3)];
 
-    let resultado = '';
+  // Eliminar espacios adicionales alrededor de la elección del jugador
+  jugador = jugador.trim();
 
-    if (opcionJugador === opcionOrdenador) {
-      // Empate
-      resultado = 'Empate. 1 punto para cada uno.';
-      puntosJugador += 1;
-      puntosOrdenador += 1;
-    } else if (
-      (opcionJugador === 'piedra' && opcionOrdenador === 'tijeras') ||
-      (opcionJugador === 'papel' && opcionOrdenador === 'piedra') ||
-      (opcionJugador === 'tijeras' && opcionOrdenador === 'papel')
-    ) {
-      // Jugador gana
-      resultado = '¡Ganaste! 3 puntos para ti.';
-      puntosJugador += 3;
-    } else {
-      // Ordenador gana
-      resultado = 'Perdiste. 0 puntos para ti.';
-      puntosOrdenador += 3;
-    }
+  let resultado = '';
 
-    actualizarTextarea(resultado);
+  if ((jugador === "papel" && computer === "piedra") || (jugador === "piedra" && computer === "tijera") || (jugador === "tijera" && computer === "papel")) {
+    resultado = 'Ganaste';
+    puntosJugador += 3;
+  } else if ((jugador === "piedra" && computer === "papel") || (jugador === "papel" && computer === "tijera") || (jugador === "tijera" && computer === "piedra")) {
+    resultado = 'Perdiste';
+    puntosO += 3; // Cambiado de puntosCPU a puntosO
+  } else {
+    resultado = 'Empate';
+    puntosJugador += 1;
+    puntosO += 1;
   }
 
-  function actualizarTextarea(resultado) {
-    const textarea = document.getElementById('numero');
-    textarea.value += resultado + '\n';
-    textarea.scrollTop = textarea.scrollHeight;
-    // Actualizar puntajes
-    textarea.value += `Puntos del jugador: ${puntosJugador}\n`;
-    textarea.value += `Puntos del ordenador: ${puntosCPU}\n\n`;
-  }
+  rondasJugadas++;
 
+  // Agregar una nueva fila a la tabla de puntuación
+  const fila = `<tr><td>${rondasJugadas}</td><td>${jugador}</td><td>${resultado}</td><td>${puntosJugador}</td><td>${puntosO}</td></tr>`;
+  tablaPuntuacion.innerHTML += fila;
+
+  if (rondasJugadas === rondasTotales) {
+    document.getElementById("botonJugar").disabled = true;
+    document.getElementById("botonEstadisticas").disabled = true;
+
+    resultadoTextarea.value += "----------------Gracias por jugar!-----------------\n";
+    
+    const limpar = document.getElementById("resultados");
+    setTimeout(function () {
+      limpar.value = "";
+      botonEstadisticas.disabled = false;
+      botonEstadisticas.hidden = true;
+      botonJugar.disabled = false;
+      botonJugar.hidden = true;
+      formularioJugador.hidden = false;
+      resultadoTextarea.hidden = true;
+      rondasJugadas = 0;
+
+      // Limpiar la tabla de puntuación
+      tablaPuntuacion.innerHTML = "<tr><th>Ronda</th><th>Apodo del Jugador</th><th>Resultado</th><th>Puntos del Jugador</th><th>Puntos de la CPU</th></tr>";
+    }, 5000);
+  }
+}
