@@ -58,59 +58,66 @@ const resultadoTextarea = document.getElementById("resultados");
  }
 
  function juego(jugador) {
-    const resultadoTextarea = document.getElementById("resultados");
-    const choices = ["piedra", "papel", "tijera"];
-    const computer = choices[Math.floor(Math.random() * 3)];
-    
-    // Eliminar espacios adicionales alrededor de la elección del jugador
-    jugador = jugador.trim();
+  const resultadoTextarea = document.getElementById("resultados");
+  const tablaPuntuacion = document.getElementById("tablaPuntuacion");
+
+  const choices = ["piedra", "papel", "tijera"];
+  const computer = choices[Math.floor(Math.random() * 3)];
   
-    if ((jugador === "papel" && computer === "piedra") || (jugador === "piedra" && computer === "tijera") || (jugador === "tijera" && computer === "papel")) {
-      resultadoTextarea.value += "Ganaste " + "Has elegido: " + jugador + " La CPU ha elegido: " + computer + "\n";
-    } else if ((jugador === "piedra" && computer === "papel") || (jugador === "papel" && computer === "tijera") || (jugador === "tijera" && computer === "piedra")) {
-      resultadoTextarea.value += "Perdiste " + "Has elegido: " + jugador + " La CPU ha elegido: " + computer + "\n";
-    } else {
-      resultadoTextarea.value += "Empate " + "Has elegido: " + jugador + " La CPU ha elegido: " + computer + "\n";
-      rondasJugadas--;
-    }
+  // Eliminar espacios adicionales alrededor de la elección del jugador
+  jugador = jugador.trim();
 
-   rondasJugadas++;
+  let resultado= '';
+  
+  if ((jugador === "papel" && computer === "piedra") || (jugador === "piedra" && computer === "tijera") || (jugador === "tijera" && computer === "papel")) {
+    resultado = 'Ganaste';
+    puntosJugador += 3;
+  } else if ((jugador === "piedra" && computer === "papel") || (jugador === "papel" && computer === "tijera") || (jugador === "tijera" && computer === "piedra")) {
+    resultado = 'Perdiste';
+    puntosO += 3; // Cambiado de puntosCPU a puntosO
+  } else {
+    resultado = 'Empate';
+    puntosJugador += 1;
+    puntosO += 1;
+  }
+  resultadoTextarea.value += `Tú elegiste: ${jugador} \nCPU eligió: ${computer} \nResultado: ${resultado} \n-----------------------------\n`;
 
-   if (rondasJugadas === rondasTotales){
-    document.getElementById("botonJugar").disabled = true;
-    document.getElementById("botonEstadisticas").disabled = true;
-    document.getElementById("piedra").hidden = true;
-    document.getElementById("papel").hidden = true;
-    document.getElementById("tijera").hidden = true;
-    document.getElementById("Ipiedra").hidden = true;
-    document.getElementById("Ipapel").hidden = true;
-    document.getElementById("Itijera").hidden = true;
+    // Agregar una nueva fila a la tabla de puntuación
+    const fila = `<tr><td>${rondasJugadas}</td><td></td><td>${puntosJugador}</td><td>${puntosO}</td></tr>`;
+    tablaPuntuacion.innerHTML += fila;
 
-     
-       resultadoTextarea.value += "----------------Gracias por jugar!-----------------\n";
-       
-       const limpar = document.getElementById("resultados");
-       setTimeout(function(){
-           limpar.value = "";
-           botonEstadisticas.disabled=false;
-           botonEstadisticas.hidden = true;
-           botonJugar.disabled=false;
-           botonJugar.hidden= true;
-           formularioJugador.hidden = false;
-           resultadoTextarea.hidden = true;
-           rondasJugadas = 0;
-       } , 5000);
-      
-      
-       
-   }
+  rondasJugadas++;
 
+  if (rondasJugadas === rondasTotales) {
+      document.getElementById("botonJugar").disabled = true;
+      document.getElementById("botonEstadisticas").disabled = true;
+      document.getElementById("piedra").hidden = true;
+      document.getElementById("papel").hidden = true;
+      document.getElementById("tijera").hidden = true;
+      document.getElementById("Ipiedra").hidden = true;
+      document.getElementById("Ipapel").hidden = true;
+      document.getElementById("Itijera").hidden = true;
 
+      resultadoTextarea.value += "----------------Gracias por jugar!-----------------\n";
+
+      const limpar = document.getElementById("resultados");
+      setTimeout(function(){
+          limpar.value = "";
+          botonEstadisticas.disabled = false;
+          botonEstadisticas.hidden = true;
+          botonJugar.disabled = false;
+          botonJugar.hidden = true;
+          formularioJugador.hidden = false;
+          resultadoTextarea.hidden = true;
+          tablaPuntuacion.hidde = true;
+          rondasJugadas = 0;
+          tablaPuntuacion.innerHTML = "<tr><th>Ronda</th><th>Apodo del Jugador</th><th>Resultado</th><th>Puntos del Jugador</th><th>Puntos de la CPU</th></tr>";
+      } , 5000);
+  }
 }
- 
 
 
-function juego(jugador) {
+/*function juego(jugador) {
   const tablaPuntuacion = document.getElementById("tablaPuntuacion");
   const choices = ["piedra", "papel", "tijera"];
   const computer = choices[Math.floor(Math.random() * 3)];
@@ -160,7 +167,7 @@ function juego(jugador) {
     }, 5000);
   }
 }
-
+*/
 
 
 const gameStatisticsContainer = document.getElementById("numero");
