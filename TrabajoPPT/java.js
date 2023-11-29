@@ -12,6 +12,10 @@ function empezarJuego() {
         return; 
     }
       
+    rondasJugadas = 0;
+    rondasTotales = 0;
+    puntosJugador = 0;
+    puntosO = 0;
        document.getElementById("botonJugar").hidden = false;
        document.getElementById("botonEstadisticas").hidden = false;
       
@@ -111,64 +115,10 @@ const resultadoTextarea = document.getElementById("resultados");
           resultadoTextarea.hidden = true;
           tablaPuntuacion.hidde = true;
           rondasJugadas = 0;
-          tablaPuntuacion.innerHTML = "<tr><th>Ronda</th><th>Apodo del Jugador</th><th>Resultado</th><th>Puntos del Jugador</th><th>Puntos de la CPU</th></tr>";
+          tablaPuntuacion.innerHTML = "<tr><th>Ronda</th><th>Apodo del Jugador</th><th>Puntos del Jugador</th><th>Puntos de la CPU</th></tr>";
       } , 5000);
   }
 }
-
-
-/*function juego(jugador) {
-  const tablaPuntuacion = document.getElementById("tablaPuntuacion");
-  const choices = ["piedra", "papel", "tijera"];
-  const computer = choices[Math.floor(Math.random() * 3)];
-
-  // Eliminar espacios adicionales alrededor de la elección del jugador
-  jugador = jugador.trim();
-
-  let resultado = '';
-
-  if ((jugador === "papel" && computer === "piedra") || (jugador === "piedra" && computer === "tijera") || (jugador === "tijera" && computer === "papel")) {
-    resultado = 'Ganaste';
-    puntosJugador += 3;
-  } else if ((jugador === "piedra" && computer === "papel") || (jugador === "papel" && computer === "tijera") || (jugador === "tijera" && computer === "piedra")) {
-    resultado = 'Perdiste';
-    puntosO += 3; // Cambiado de puntosCPU a puntosO
-  } else {
-    resultado = 'Empate';
-    puntosJugador += 1;
-    puntosO += 1;
-  }
-
-  rondasJugadas++;
-
-  // Agregar una nueva fila a la tabla de puntuación
-  const fila = `<tr><td>${rondasJugadas}</td><td>${jugador}</td><td>${resultado}</td><td>${puntosJugador}</td><td>${puntosO}</td></tr>`;
-  tablaPuntuacion.innerHTML += fila;
-
-  if (rondasJugadas === rondasTotales) {
-    document.getElementById("botonJugar").disabled = true;
-    document.getElementById("botonEstadisticas").disabled = true;
-
-    resultadoTextarea.value += "----------------Gracias por jugar!-----------------\n";
-    
-    const limpar = document.getElementById("resultados");
-    setTimeout(function () {
-      limpar.value = "";
-      botonEstadisticas.disabled = false;
-      botonEstadisticas.hidden = true;
-      botonJugar.disabled = false;
-      botonJugar.hidden = true;
-      formularioJugador.hidden = false;
-      resultadoTextarea.hidden = true;
-      rondasJugadas = 0;
-
-      // Limpiar la tabla de puntuación
-      tablaPuntuacion.innerHTML = "<tr><th>Ronda</th><th>Apodo del Jugador</th><th>Resultado</th><th>Puntos del Jugador</th><th>Puntos de la CPU</th></tr>";
-    }, 5000);
-  }
-}
-*/
-
 
 const gameStatisticsContainer = document.getElementById("numero");
 
