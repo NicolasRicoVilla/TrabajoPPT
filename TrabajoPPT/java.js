@@ -2,6 +2,7 @@
 let rondasJugadas = 0;
 let rondasTotales = 0;
 let puntosJugador= 0;
+let apodoJugador = "";
 let puntosO = 0;
 function empezarJuego() {
 
@@ -16,6 +17,8 @@ function empezarJuego() {
     rondasTotales = 0;
     puntosJugador = 0;
     puntosO = 0;
+    apodoJugador= jugador;
+
        document.getElementById("botonJugar").hidden = false;
        document.getElementById("botonEstadisticas").hidden = false;
       
@@ -87,7 +90,7 @@ const resultadoTextarea = document.getElementById("resultados");
   resultadoTextarea.value += `Tú elegiste: ${jugador} \nCPU eligió: ${computer} \nResultado: ${resultado} \n-----------------------------\n`;
 
     // Agregar una nueva fila a la tabla de puntuación
-    const fila = `<tr><td>${rondasJugadas}</td><td></td><td>${puntosJugador}</td><td>${puntosO}</td></tr>`;
+    const fila = `<tr><td>${rondasJugadas}</td><td>${apodoJugador}</td><td>${puntosJugador}</td><td>${puntosO}</td></tr>`;
     tablaPuntuacion.innerHTML += fila;
 
   rondasJugadas++;
