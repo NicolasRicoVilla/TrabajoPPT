@@ -160,3 +160,57 @@ function juego(jugador) {
     }, 5000);
   }
 }
+
+
+
+const gameStatisticsContainer = document.getElementById("numero");
+
+
+ // Variables globales para almacenar las estadísticas (simuladas)
+let estadisticas = [
+  { apodo: 'Jugador1', puntacion: 3, fecha: '2023-01-01' },
+  { apodo: 'Jugador2', puntacion: 5, fecha: '2023-01-02' },
+  // Agrega más estadísticas según sea necesario
+];
+
+function mostrarEstadisticas() {
+  // Obtener el contenido del textarea
+  const estadisticasTexto = document.getElementById('resultados').value;
+
+  // Convertir el texto a un array de objetos
+  const estadisticas = estadisticasTexto.split('\n').map(linea => {
+      const [apodoJugador, puntacion, fecha] = linea.split(','); // Suponiendo que los datos están separados por comas
+      return {apodoJugador, puntacion: parseInt(puntacion), fecha };
+  });
+
+  // Crear una ventana modal
+  const modal = window.open('', 'Estadisticas', 'width=400,height=400');
+
+  // Crear el contenido de la ventana modal
+  const contenidoModal = `
+      <h2>Estadísticas del Juego</h2>
+      <table>
+          <tr>
+              <th>Apodo</th>
+              <th>Puntuación</th>
+              <th>Fecha</th>
+          </tr>
+          ${estadisticas.map(estadistica => `
+              <tr>
+                  <td>${estadistica.apodoJugador}</td>
+                  <td>${estadistica.puntacion}</td>
+                  <td>${estadistica.fecha}</td>
+              </tr>`).join('')}
+      </table>
+      <button onclick="cerrarVentana()">Cerrar</button>
+  `;
+
+  // Agregar el contenido a la ventana modal
+  modal.document.body.innerHTML = contenidoModal;
+}
+
+
+function cerrarVentana() {
+  // Cerrar la ventana modal
+  window.close();
+}
