@@ -38,7 +38,9 @@ function jugarPartida() {
   const botonPapel = document.getElementById("papel");
   const botonTijera = document.getElementById("tijera");
   const resultadoTextarea = document.getElementById("resultados");
+  const tablaPuntuacion = document.getElementById("tablaPuntuacion");
 
+  tablaPuntuacion.hidden = false;
   resultadoTextarea.hidden = false;
   botonEstadisticas.hidden = true;
   botonJugar.hidden = true;

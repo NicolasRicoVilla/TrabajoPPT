@@ -1,56 +1,90 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    text-align: center;
+    background-color: #f4f4f4;
     margin: 0;
-    padding: 0;
 }
 
+#div1 {
+    text-align: center;
+    margin: 20px;
+}
 
 h1 {
-    font-size: 24px;
-    color: #333;
-}
-label {
-    font-size: 18px;
-    color: #333;
+    color: #000;
 }
 
+#formularioJugador {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+#label1{
+    border-radius: 20px;
+
+}
 input {
     padding: 5px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
 }
 
 button {
-    font-size: 18px;
+    padding: 8px 16px;
+    background-color: #671b88;
+    color: #fff;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    margin: 10px;
+    border-radius: 20px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-textarea{
-background-color: #949494;
-width: 400px; 
-height: 350px; 
-padding: 10px; 
-font-size: 14px; 
-border: 5px solid color(black ); 
-border-radius: 5px; 
-resize: none;
-color: white;
+button:hover {
+    background-color: #9e4ac2;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+#menu {
     margin-top: 20px;
-  }
-  th, td {
-    border: 1px solid black;
-    padding: 8px;
+}
+
+.game-icon {
+    margin-top: 10px;
+}
+
+#resultados {
+    width: 50%;
+    height: 250px;
+    resize: none;
+    border-radius: 10px;
+
+}
+
+#tablaPuntuacion {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+#tablaPuntuacion th, #tablaPuntuacion td {
+    padding: 10px;
     text-align: center;
-  }
+    border-radius: 20px;
+
+}
+
+#tablaPuntuacion th {
+    background-color: #9e4ac2;
+    color: #fff;
+}
+
+#tablaPuntuacion tr:nth-child(even) {
+    background-color: #b996c8;
+}
+
+#tablaPuntuacion tr:hover {
+    background-color: #fff;
+}
+
+#div3 {
+    margin-top: 20px;
+}
