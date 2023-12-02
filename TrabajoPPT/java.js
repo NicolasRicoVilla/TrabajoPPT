@@ -52,17 +52,17 @@ function jugarPartida() {
   botonPiedra.hidden = false;
   botonTijera.hidden = false;
 
-  const rondasSeleccionadas = prompt("Selecciona la cantidad de rondas (3 o 5):");
-  if (rondasSeleccionadas === "3" || rondasSeleccionadas === "5") {
 
-    rondasTotales = parseInt(rondasSeleccionadas);
+  let rondasSeleccionadas ;
+  while (true) {
+    rondasSeleccionadas = prompt("Selecciona la cantidad de rondas (3 o 5):");
 
-
-
-  } else {
-    alert("Seleccione un número de rondas válido 3 o 5");
-    return;
-
+    if (rondasSeleccionadas === "3" || rondasSeleccionadas === "5") {
+      rondasTotales = parseInt(rondasSeleccionadas);
+      break; // Exit the loop if a valid input is provided
+    } else {
+      alert("Seleccione un número de rondas válido 3 o 5");
+    }
   }
 }
 
